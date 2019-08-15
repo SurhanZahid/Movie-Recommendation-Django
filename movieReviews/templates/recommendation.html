@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block recommender %}active{% endblock %}
+{% block body %}
+<h2 style="margin-top:40px;" class="text-center">Recommendation</h2>
+<div class="row">
+{%for a in  object_list.itertuples %}
+<div class="col-md-3">
+        <div style="margin-top:10px;"
+            class='card text-white {% if a.avg_rating >= 4.0  %}blue-gradient mb-3{% elif a.avg_rating >= 3.0 %}card text-white aqua-gradient mb-3{% elif a.avg_rating >= 2.0 %}card text-white peach-gradient mb-3{% elif a.avg_rating >= 1.0 %}card text-white young-passion-gradient mb-3{% endif %}" style="max-width: 20rem;'>
+            <div class="card-header">{{a.title}}</div>
+            <div class="card-body">
+                <h5 class="card-title">{{a.avg_rating}} {{a.date}}</h5>
+                <p class="card-text text-white">{{a.genres}}</p>
+            </div>
+        </div>
+    </div>
+<br>
+{% endfor %}
+</div>
+
+{% endblock %}

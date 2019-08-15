@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block home %}active{% endblock %}
+{% block body %}
+<h2 style="margin-top:40px;" class="text-center">Movies</h2>
+<div class="row">
+    {% for a in object_list %}
+    <div class="col-md-3">
+        <div style="margin-top:10px;"
+            class='card text-white {% if a.rating >= 4.0  %}blue-gradient mb-3{% elif a.rating >= 3.0 %}card text-white aqua-gradient mb-3{% elif a.rating >= 2.0 %}card text-white peach-gradient mb-3{% elif a.rating >= 1.0 %}card text-white young-passion-gradient mb-3{% endif %}" style="max-width: 20rem;'>
+            <div class="card-header {% if a.rating >= 4.0  %}blue-gradient{% elif a.rating >= 3.0 %}aqua-gradient{% elif a.rating >= 2.0 %}peach-gradient{% elif a.rating >= 1.0 %}young-passion-gradient{% endif %}">{{a.movieId.title}}</div>
+            <div class="card-body">
+                <h5 class="card-title">{{a.rating}}</h5>
+                <p class="card-text text-white">{{a.movieId.genres}}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="pagination pagination-centered">
+    <center>
+        <span class="step-links">
+            {% if object_list.has_previous %}
+            <a href="?page={{ object_list.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
+            </span>
+
+            {% if object_list.has_next %}
+            <a href="?page={{ object_list.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+</div>
+{% endblock %}
