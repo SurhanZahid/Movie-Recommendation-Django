@@ -20,7 +20,6 @@ Movie Recommendation uses a number of open source projects to work properly:
 * [mysql] - MySQL is an open-source relational database management system.
 * [python] - Python is an interpreted, high-level, general-purpose programming language
 
-And of course Photo Gallery itself is open source .
 
 ### Requirments
 <ol>
