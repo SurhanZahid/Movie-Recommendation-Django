@@ -1,6 +1,6 @@
 # Movie Recommendation (Django Framework)
 <p align="center">
-  <img width="1060" height="500" src="https://miro.medium.com/max/2000/1*dMR3xmufnmKiw4crlisQUA.png">
+  <img width="1060" height="600" src="https://user-images.githubusercontent.com/32094006/63122967-6411eb00-bfc1-11e9-9ecb-908d448d3637.png">
 </p>
 
 ### Description
