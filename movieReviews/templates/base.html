@@ -47,6 +47,17 @@
                     <a href="{% url 'movies:recommendation' %}" class="nav-link"><i class="fas fa-fire"></i> <span
                             class="clearfix d-none d-sm-inline-block">Recommendations</span></a>
                 </li>
+                {% if user.is_authenticated %}
+                
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">{{user_name}}</a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{% url 'movies:logout' %}">Logout</a>
+                    </div>
+                </li>
+                {% endif %}
                
             </ul>
         </nav>
@@ -55,10 +66,10 @@
     <!--/.Double navigation-->
 
     <!--Main layout-->
-    <main>
+    <div class="container" style="margin-top: 130px;">
         {% block body %} {% endblock %}
 
-    </main>
+    </div>
    
     <!-- SCRIPTS -->
 

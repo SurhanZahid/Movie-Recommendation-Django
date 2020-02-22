@@ -6,10 +6,10 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import numpy as np
 import pandas as pd
 import pymysql
+from django.contrib.auth.decorators import login_required
 
 
-
-
+@login_required(login_url='/login/')
 def Recommendation(request):
     connection = pymysql.connect("localhost","root","","moviereviews" )
 
@@ -51,8 +51,10 @@ def Recommendation(request):
     
     return render(request, "recommendation.html", context)
 
-
+@login_required(login_url='/login/')
 def post_list(request):
+    userId = request.user.id
+    userName = request.user.username
     queryset_list = Ratings.objects.select_related('movieId')
     
     paginator = Paginator(queryset_list, 12)  # Show 25 contacts per page
@@ -67,6 +69,8 @@ def post_list(request):
         queryset = paginator.page(paginator.num_pages)
     
     context = {
+        "user_id":userId,
+        "user_name":userName,
         "object_list": queryset,
         "title": "List"}
     return render(request, "home.html", context)
