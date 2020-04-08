@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div style="margin-top:10px;"
+            class='card text-white blue-gradient mb-3' style="max-width: 20rem;">
+            <div class="card-header blue-gradient">{{detail.title}}</div>
+            <div class="card-body">
+                
+                <p class="card-text text-white">{{detail.genres}}</p>
+            </div>
+        </div>
+
+<div class="row">
+    {% for a in content.itertuples %}
+    <div class="col-md-3">
+        <div style="margin-top:10px;"
+            class='card text-white blue-gradient mb-3' style="max-width: 20rem;">
+            <div class="card-header blue-gradient">{{a.title}}</div>
+            <div class="card-body">
+                
+                <p class="card-text text-white">{{a.genres}}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock body %}

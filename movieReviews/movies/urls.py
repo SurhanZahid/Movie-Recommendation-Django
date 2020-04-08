@@ -8,9 +8,10 @@ from django.conf.urls.static import static
 app_name = 'movies'
 
 urlpatterns = [
-    url(r'^home', views.post_list, name='home'),
-    url(r'^login/',login_view,name='login'),
-    url(r'^logout/', logout_view, name='logout'),
-    url(r'^recommendations/', views.Recommendation, name='recommendation')
+    path('home', views.post_list, name='home'),
+    path('login',login_view,name='login'),
+    path('logout', logout_view, name='logout'),
+    path('recommendation', views.recommendation, name='recommendation'),
+    path('detail/<int:id>', views.detail, name='detail')
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

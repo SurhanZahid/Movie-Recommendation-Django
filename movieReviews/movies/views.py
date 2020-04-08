@@ -7,10 +7,9 @@ import numpy as np
 import pandas as pd
 import pymysql
 from django.contrib.auth.decorators import login_required
+from . import contentbased as cb
 
-
-@login_required(login_url='/login/')
-def Recommendation(request):
+def recommendation(request):
     connection = pymysql.connect("localhost","root","","moviereviews" )
 
 
@@ -51,7 +50,7 @@ def Recommendation(request):
     
     return render(request, "recommendation.html", context)
 
-@login_required(login_url='/login/')
+
 def post_list(request):
     userId = request.user.id
     userName = request.user.username
@@ -74,3 +73,18 @@ def post_list(request):
         "object_list": queryset,
         "title": "List"}
     return render(request, "home.html", context)
+
+def detail(request,id):
+    connection = pymysql.connect("localhost", "root", "", "moviereviews")
+    ds = pd.read_sql_query("SELECT * from movies_movies", connection)
+
+    detail = Movies.objects.get(id=id)
+    results = cb.getFrames(ds)
+    content = cb.recommend(item_id=id, num=5,results=results)
+
+    context = {
+        "detail":detail,
+        "content":content,
+    }
+    return render(request, "detail.html", context)
+
