@@ -9,6 +9,9 @@ In this project, I wanted to implement different recommendation techniques on th
 ### Knowledge Based Recommendation
 Knowledge-based recommender systems are a specific type of recommender system that are based on explicit knowledge about the item assortment, user preferences, and recommendation criteria.
 
+### Content Based Recommendation
+One popular technique of recommendation/recommender systems is content-based filtering. Content here refers to the content or attributes of the products you like. So, the idea in content-based filtering is to tag products using certain keywords, understand what the user likes, look up those keywords in the database and recommend different products with the same attributes.Taken from this [medium] artical.
+
 
 ### Tech
 
@@ -39,3 +42,4 @@ Movie Recommendation uses a number of open source projects to work properly:
    [pymysql]:<https://pymysql.readthedocs.io/en/latest/>
    [mysql]:<https://www.mysql.com/>
    [python]:<https://www.python.org/>
+   [medium]:<https://medium.com/towards-artificial-intelligence/content-based-recommender-system-4db1b3de03e7>
